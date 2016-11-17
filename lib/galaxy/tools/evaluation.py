@@ -456,7 +456,7 @@ class ToolEvaluator( object ):
         """
 	command = self.tool.command
 	param_dict = self.param_dict
-	interpreter = self.tool.interpreter
+        interpreter = self.tool.interpreter
         
         command_line = None
         if not command:
@@ -464,7 +464,8 @@ class ToolEvaluator( object ):
         try:
             # Substituting parameters into the command
             command_line = fill_template( command, context=param_dict )
-            cleaned_command_line = []
+            print "command_line: " + str(command_line)
+	    cleaned_command_line = []
             # Remove leading and trailing whitespace from each line for readability.
             for line in command_line.split( '\n' ):
                 cleaned_command_line.append( line.strip() )
@@ -476,7 +477,7 @@ class ToolEvaluator( object ):
             # e.args = ( 'Error substituting into command line. Params: %r, Command: %s' % ( param_dict, self.command ), )
             raise
         if interpreter:
-            # TODO: path munging for cluster/dataset server relocatability
+	    # TODO: path munging for cluster/dataset server relocatability
             executable = command_line.split()[0]
             tool_dir = os.path.abspath( self.tool.tool_dir )
             abs_executable = os.path.join( tool_dir, executable )

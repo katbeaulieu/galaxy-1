@@ -15,6 +15,7 @@ def fill_template( template_text, context=None, **kwargs ):
         context = kwargs
     #Remove the value of the password parameter from the job command line before 
     #sending it off.	    	 
+    print "context: " + str(context)
     flag = False
     if 'JPCNn681vcGV4KuvuT16' in context.keys():
 	flag = True
